@@ -22,7 +22,7 @@ requirements:
 
 test:
   commands:
-    - test -f "${PREFIX}/bin/sed"  # [unix]
+    - test -f "${PREFIX}/bin/sed"
     - sed --version
 
 about:
