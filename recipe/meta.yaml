@@ -16,7 +16,7 @@ build:
 
 requirements:
   build:
-    - gettext >=0.19.2
+    - gettext >=0.19.2  # [osx]
   run:
     - gettext  # [osx]
 
