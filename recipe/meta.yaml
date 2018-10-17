@@ -11,11 +11,13 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 1001
   skip: true  # [win]
 
 requirements:
   build:
+    - {{ compiler('c') }}
+  host:
     - gettext >=0.19.2  # [osx]
   run:
     - gettext >=0.19.2  # [osx]
