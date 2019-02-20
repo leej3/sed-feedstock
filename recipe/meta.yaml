@@ -17,6 +17,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - make
   host:
     - gettext >=0.19.2  # [osx]
   run:
