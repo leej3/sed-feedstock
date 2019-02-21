@@ -10,5 +10,5 @@ if [[ $(uname) == Linux ]]; then
 fi
 
 make $VERBOSE_AT
-make -j 1 check
+make -j 1 check || { cat ./test-suite.log; exit 1; }
 make install
