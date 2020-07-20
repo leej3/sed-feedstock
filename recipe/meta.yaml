@@ -1,5 +1,5 @@
-{% set version = "4.7" %}
-{% set sha256 = "2885768cd0a29ff8d58a6280a270ff161f6a3deb5690b2be6c49f46d4c67bd6a" %}
+{% set version = "4.8" %}
+{% set sha256 = "f79b0cfea71b37a8eeec8490db6c5f7ae7719c35587f21edb0617f370eeff633" %}
 
 package:
   name: sed
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1000
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -31,6 +31,7 @@ test:
 about:
   home: https://www.gnu.org/software/sed/
   license: GPL-3
+  license_file: COPYING
   summary: 'sed (stream editor) is a non-interactive command-line text editor.'
 
 extra:
