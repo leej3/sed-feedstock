@@ -26,4 +26,7 @@ if [[ -f ./test-suite.log ]]; then
     cat ./test-suite.log
 fi
 
+# remove installed sed from PATH so that it isn't called
+export PATH=$(echo $PATH | sed "s@$CONDA_PREFIX/bin:@@g")
+
 make install
