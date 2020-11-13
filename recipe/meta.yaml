@@ -16,7 +16,7 @@ build:
 
 requirements:
   build:
-    - libtool  # [unix]
+    - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - make
   host:
