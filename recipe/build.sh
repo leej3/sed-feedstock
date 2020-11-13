@@ -6,7 +6,7 @@ set -ex
 
 ./configure --prefix="$PREFIX"
 
-if [[ $(uname) == Linux ]]; then
+if [[ "$target_platform" == linux-* ]]; then
     # Remove test broken in sed 4.4
     sed -i.bak -e 's|testsuite/panic-tests.sh||' Makefile
 fi
@@ -18,9 +18,12 @@ if [[ ${target_platform} == linux-aarch64 ]]; then
     make check -j${NUM_CPUS} || true
 elif [[ ${target_platform} == linux-ppc64le ]]; then
     make check -j${NUM_CPUS} || true
-else
-    make check -j${NUM_CPUS}
+elif [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
+    make check -j${NUM_CPUS} || (cat ./test-suite.log; false)
 fi
-cat ./test-suite.log
+
+if [[ -f ./test-suite.log ]]; then
+    cat ./test-suite.log
+fi
 
 make install
