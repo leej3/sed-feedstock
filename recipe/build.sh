@@ -1,6 +1,6 @@
 #!/bin/bash
 # Get an updated config.sub and config.guess
-cp $BUILD_PREFIX/share/libtool/build-aux/config.* ./build-aux
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./build-aux
 
 set -ex
 
@@ -27,6 +27,6 @@ if [[ -f ./test-suite.log ]]; then
 fi
 
 # remove installed sed from PATH so that it isn't called
-export PATH=$(echo $PATH | sed "s@$CONDA_PREFIX/bin:@@g")
+export PATH=$(echo $PATH | sed "s@$PREFIX/bin:@@g")
 
 make install
