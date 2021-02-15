@@ -11,18 +11,29 @@ source:
   sha256: {{ sha256 }}
 
 build:
+{% if bootstrapping == 'yes' %}
+  # Please increment by two
   number: 0
+  string: h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_bootstrapping
+{% else %}
+  # Keep above the number of the _bootstrapping package
+  number: 1
+{% endif %}
   skip: true  # [win]
+  script_env:
+    - BOOTSTRAPPING={{ bootstrapping }}
 
 requirements:
   build:
-    - gnuconfig  # [unix]
     - {{ compiler('c') }}
+{% if bootstrapping != 'yes' %}
+    - gnuconfig  # [unix]
     - make
   host:
     - gettext >=0.19.2  # [osx]
   run:
     - gettext >=0.19.2  # [osx]
+{% endif %}
 
 test:
   commands:
